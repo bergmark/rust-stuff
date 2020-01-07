@@ -18,7 +18,7 @@ fn parse_char(pos: Pos, c: char) -> Cell {
     }
 }
 
-fn parse(s: &String) -> Puzzle {
+fn parse(s: &str) -> Puzzle {
     let board = s.lines().enumerate().map(|(row, l)| {
         l.chars().enumerate().map(|(col, c)| parse_char(Pos { row, col }, c)).collect::<Vec<_>>()
     }).flatten().collect();
@@ -83,8 +83,7 @@ impl Cell {
                   None => false,
               }
           } else {
-              assert!(false, "impossible");
-              false
+              panic!("Was single but could not get single???")
           }
         }
     }
@@ -158,16 +157,6 @@ impl Puzzle {
         };
         groups
     }
-}
-
-
-
-fn handle(puzzle: &Puzzle, removed: usize) -> usize {
-    if removed > 0 {
-        print_puzzle(&puzzle)
-    }
-    verify_state(&puzzle);
-    removed
 }
 
 fn main() {
