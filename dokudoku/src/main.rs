@@ -245,8 +245,8 @@ impl Cell {
         self.options.contains(&d)
     }
 
-    fn has_exactly_options(&self, vs: &Vec<u8>) -> bool {
-        self.options == *vs
+    fn has_exactly_options(&self, vs: &[u8]) -> bool {
+        self.options[..] == *vs
     }
 
     fn remove_single(&mut self, pos: Pos, single: u8) -> bool {
